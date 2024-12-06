@@ -1,0 +1,40 @@
+$primary-color: #343a40;
+$hover-color: lighten($primary-color, 10%);
+$background-color: #212529;
+$text-color: #d003448c;
+$text-hover-color: #ffffff;
+$border-color: #eeeedd;
+
+.navbar-toggler {
+  background-color: $primary-color;
+  border: .1em solid $border-color;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+  color: $text-color;
+
+  &:focus,
+  &:active {
+    border: .15em solid $border-color; 
+    box-shadow: none; 
+  }
+
+  &.collapsed {
+    border: .1em solid $border-color; 
+  }
+
+  .navbar-toggler-icon {
+    background-color: transparent;
+    filter: invert(1);
+  }
+}
+
+#navbarContent {
+  text-align: center;
+  
+  .nav-link {
+    color: $text-color;
+    font-weight: 700;
+  }
+
+}
+
