@@ -36,5 +36,12 @@ $border-color: #eeeedd;
     font-weight: 700;
   }
 
+  .btn {
+    margin: auto;
+  }
+
+  .btn-dark {
+    background-color: $primary-color;
+  }
 }
 
