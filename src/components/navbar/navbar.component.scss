@@ -14,8 +14,7 @@ $border-color: #eeeedd;
 
   &:focus,
   &:active {
-    border: .15em solid $border-color; 
-    background-color: $text-color;
+    border: .15em solid $border-color;
     box-shadow: none; 
   }
 
@@ -35,10 +34,6 @@ $border-color: #eeeedd;
   .nav-link {
     color: $text-color;
     font-weight: 700;
-  }
-
-  &:hover {
-    background-color: $hover-color;
   }
 
   .btn {
