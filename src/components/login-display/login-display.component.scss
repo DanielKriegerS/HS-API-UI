@@ -5,31 +5,35 @@ $text-color: #d003448c;
 $text-hover-color: #ffffff;
 $border-color: #eeeedd;
 
-  .login-form {
-      max-width: 400px;
-      margin: 0 auto; 
-      border: 1px solid lighten($primary-color, 30%);
-      color: $text-color;
-  
-      h2 {
-        color: $text-color;
-      }
-  
-      .form-label {
-        font-weight: bold;
-      }
-  
-      .form-control {
-        border-radius: 0.25rem;
-      }
-  
-      button {
-        background-color: $primary-color;
-        color: $text-hover-color;
-        &:hover {
-          background-color: $hover-color;
-        }
-      }
+.login-form {
+  max-width: 400px;
+  margin: 0 auto;
+  border: 1px solid lighten($primary-color, 30%);
+  color: $text-color;
+
+  h2 {
+    color: $text-color;
+  }
+
+  .form-label {
+    font-weight: bold;
+  }
+
+  .form-control {
+    border-radius: 0.25rem;
+  }
+
+  button {
+    background-color: $primary-color;
+    color: $text-hover-color;
+
+    &:hover {
+      background-color: $hover-color;
     }
-  
-  
+  }
+
+  .text-danger {
+    color: red;
+    font-weight: bold;
+  }
+}
