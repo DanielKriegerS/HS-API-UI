@@ -12,6 +12,9 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+  title(title: any) {
+    throw new Error('Method not implemented.');
+  }
   activeComponent: string | null = null;
 
   constructor(private navigationService: NavigationService) {
