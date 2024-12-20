@@ -1,3 +1,8 @@
 import { Routes } from '@angular/router';
+import { LoginDisplayComponent } from '../components/login-display/login-display.component';
 
-export const routes: Routes = [];
+
+export const appRoutes: Routes = [
+  { path: 'login', component: LoginDisplayComponent }, 
+  { path: '**', redirectTo: '' }, 
+];

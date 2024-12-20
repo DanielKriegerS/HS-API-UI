@@ -1,5 +1,4 @@
 import { Component, ElementRef } from '@angular/core';
-import { NavigationService } from '../../app/services/navigation.service';
 
 @Component({
   selector: 'app-navbar',
@@ -8,12 +7,7 @@ import { NavigationService } from '../../app/services/navigation.service';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent {
-  constructor(private navigationService: NavigationService, private el: ElementRef) {}
-
-  showComponent(componentName: string): void {
-    this.navigationService.setActiveComponent(componentName);
-    this.closeNavbar(); 
-  }
+  constructor(private el: ElementRef) {}
 
   closeNavbar(): void {
     const navbar = this.el.nativeElement.querySelector('#navbarContent');

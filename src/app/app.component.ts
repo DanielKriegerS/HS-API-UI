@@ -1,25 +1,18 @@
 import { Component } from '@angular/core';
-import { NavigationService } from './services/navigation.service';
 import { HeaderComponent } from "../components/header/header.component";
-import { LoginDisplayComponent } from "../components/login-display/login-display.component";
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
+
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   standalone: true,
-  imports: [HeaderComponent, LoginDisplayComponent, CommonModule],
+  imports: [HeaderComponent,  CommonModule, RouterModule],
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
   title(title: any) {
     throw new Error('Method not implemented.');
-  }
-  activeComponent: string | null = null;
-
-  constructor(private navigationService: NavigationService) {
-    this.navigationService.activeComponent$.subscribe((componentName) => {
-      this.activeComponent = componentName;
-    });
-  }
-}
+   }
+ }
