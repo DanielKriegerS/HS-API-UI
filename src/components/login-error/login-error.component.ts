@@ -1,16 +1,24 @@
+import { Component, OnInit } from '@angular/core';
+import { LoginErrorService } from '../../app/services/login-error.service';
 import { CommonModule } from '@angular/common';
-import { Component , Input } from '@angular/core';
 
 @Component({
   selector: 'app-login-error',
   standalone: true,
   imports: [CommonModule],
   templateUrl: './login-error.component.html',
-  styleUrl: './login-error.component.scss'
+  styleUrls: ['./login-error.component.scss']
 })
-export class LoginErrorComponent {
-  @Input() errorCode?: number;
-  @Input() errorMessage?: string;
+export class LoginErrorComponent implements OnInit {
+  errorCode?: number;
+  errorMessage?: string;
+
+  constructor(private errorService: LoginErrorService) {}
+
+  ngOnInit(): void {
+    this.errorService.errorCode$.subscribe(code => (this.errorCode = code));
+    this.errorService.errorMessage$.subscribe(message => (this.errorMessage = message));
+  }
 
   get displayMessage(): string {
     if (!this.errorCode || !this.errorMessage) {
@@ -19,7 +27,7 @@ export class LoginErrorComponent {
 
     switch (this.errorCode) {
       case 0:
-        return 'O servidor está indisponível no momento. Tente novamente mais tarde.';
+        return 'O servidor está indisponível no momento.';
       case 404:
         return 'Usuário não encontrado. Verifique seu e-mail.';
       case 400:

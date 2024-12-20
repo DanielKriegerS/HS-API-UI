@@ -1,21 +1,27 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, tap } from 'rxjs';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { Observable, throwError } from 'rxjs';
+import { catchError, tap } from 'rxjs/operators';
 import { LoginResponse } from '../../models/LoginResponse';
-
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
-
   private apiUrl = 'http://localhost:8080/users/login';
+
   constructor(private http: HttpClient) {}
 
   login(email: string, password: string): Observable<LoginResponse> {
     return this.http.post<LoginResponse>(this.apiUrl, { email, password }).pipe(
       tap((response: LoginResponse) => {
-        localStorage.setItem('authToken', response.token); 
+        localStorage.setItem('authToken', response.token);
+      }),
+      catchError((error: HttpErrorResponse) => {
+        if (error.status === 0) {
+          return throwError(() => new Error('Não foi possível conectar ao servidor. Verifique sua conexão.'));
+        }
+        return throwError(() => error); 
       })
     );
   }
@@ -31,6 +37,11 @@ export class LoginService {
 
   logout(): void {
     localStorage.removeItem('authToken');
+  }
+
+  private handleError(error: HttpErrorResponse): Observable<never> {
+    console.error('Erro HTTP:', error);
+    return throwError(() => error); 
   }
 }
 
