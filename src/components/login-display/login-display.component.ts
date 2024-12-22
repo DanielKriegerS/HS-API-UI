@@ -2,14 +2,14 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpErrorResponse } from '@angular/common/http';
 import { LoginService } from '../../app/services/login.service';
-import { LoginErrorService } from '../../app/services/login-error.service';
+import { AuthErrorService } from '../../app/services/auth-error.service';
 import { FormsModule } from '@angular/forms';
-import { LoginErrorComponent } from '../login-error/login-error.component';
+import { FormErrorComponent } from '../auth-error/auth-error.component';
 
 @Component({
   selector: 'app-login-display',
   standalone: true,
-  imports: [CommonModule, FormsModule, LoginErrorComponent],
+  imports: [CommonModule, FormsModule, FormErrorComponent],
   templateUrl: './login-display.component.html',
   styleUrls: ['./login-display.component.scss']
 })
@@ -17,7 +17,7 @@ export class LoginDisplayComponent {
   email: string = '';
   password: string = '';
 
-  constructor(private loginService: LoginService, private errorService: LoginErrorService) {}
+  constructor(private loginService: LoginService, private errorService: AuthErrorService) {}
 
   onLogin(): void {
       this.errorService.clearError();

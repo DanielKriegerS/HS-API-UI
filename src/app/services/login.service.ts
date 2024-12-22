@@ -38,10 +38,5 @@ export class LoginService {
   logout(): void {
     localStorage.removeItem('authToken');
   }
-
-  private handleError(error: HttpErrorResponse): Observable<never> {
-    console.error('Erro HTTP:', error);
-    return throwError(() => error); 
-  }
 }
 

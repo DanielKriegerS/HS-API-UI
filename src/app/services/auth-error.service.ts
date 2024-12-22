@@ -4,7 +4,7 @@ import { BehaviorSubject } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
-export class LoginErrorService {
+export class AuthErrorService {
   private errorCodeSource = new BehaviorSubject<number | undefined>(undefined);
   private errorMessageSource = new BehaviorSubject<string | undefined>(undefined);
 

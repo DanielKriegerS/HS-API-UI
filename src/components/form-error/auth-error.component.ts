@@ -1,19 +1,19 @@
 import { Component, OnInit } from '@angular/core';
-import { LoginErrorService } from '../../app/services/login-error.service';
+import { AuthErrorService } from '../../app/services/auth-error.service';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-login-error',
+  selector: 'app-auth-error',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './login-error.component.html',
-  styleUrls: ['./login-error.component.scss']
+  templateUrl: './auth-error.component.html',
+  styleUrls: ['./auth-error.component.scss']
 })
-export class LoginErrorComponent implements OnInit {
+export class AuthErrorComponent implements OnInit {
   errorCode?: number;
   errorMessage?: string;
 
-  constructor(private errorService: LoginErrorService) {}
+  constructor(private errorService: AuthErrorService) {}
 
   ngOnInit(): void {
     this.errorService.errorCode$.subscribe(code => (this.errorCode = code));
