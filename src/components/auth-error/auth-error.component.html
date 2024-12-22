@@ -1,0 +1,17 @@
+<div *ngIf="errorCode && errorMessage" class="error">
+  <ng-container [ngSwitch]="errorCode">
+    <div *ngSwitchCase="404">
+      {{ errorMessage }}
+      <span class="link" (click)="navigateToRegister()">Registrar-se</span>.
+    </div>
+    
+    <div *ngSwitchCase="409">
+      {{ errorMessage }}
+      <span class="link" (click)="navigateToLogin()">Login</span>.
+    </div>
+
+    <div *ngSwitchDefault>
+      {{ errorMessage }}
+    </div>
+  </ng-container>
+</div>
