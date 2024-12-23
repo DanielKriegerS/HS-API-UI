@@ -18,15 +18,13 @@ export class AuthErrorComponent implements OnInit {
   constructor(private errorService: AuthErrorService, private router: Router) {}
 
   ngOnInit(): void {
-    // Subscreve aos erros do AuthErrorService
     this.errorService.errorContext$.subscribe(context => (this.errorContext = context));
     this.errorService.errorCode$.subscribe(code => (this.errorCode = code));
     this.errorService.errorMessage$.subscribe(message => (this.errorMessage = message));
 
-    // Limpa o erro ao navegar para outra rota
     this.router.events.subscribe(event => {
       if (event instanceof NavigationStart) {
-        this.errorService.clearError(); // Limpa o erro
+        this.errorService.clearError();
       }
     });
   }
