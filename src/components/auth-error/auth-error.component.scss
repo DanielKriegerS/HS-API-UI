@@ -1,6 +1,8 @@
-.alert {
-    font-size: 0.9rem;
+@import '../../styles/variables.scss';
+
+.error, .link {
+    font-weight: 800;
     margin-top: 10px;
     text-align: center;
+    color: $error-color;
   }
-  
