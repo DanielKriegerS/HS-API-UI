@@ -39,8 +39,19 @@
     margin: auto;
     font-weight: 800;
   }
+}
 
-  .btn-dark {
-    background-color: $primary-color;
+@media (min-width: 769px) {
+  .navbar-nav {
+    margin: auto;
+  }
+
+  .nav-link {
+    font-size: 1.2em;
+    border-radius: 3em;
+    margin-right: .3rem;
+    &:hover {
+      background-color: $hover-color;
+    }
   }
 }
