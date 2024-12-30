@@ -1,0 +1,26 @@
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { catchError, map, of } from 'rxjs';
+import { environment } from '../../environments/environment';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class ServerStatusService {
+  
+  constructor(private http: HttpClient) {}
+
+  checkServerStatus() {
+    return this.http.get(`${environment.apiBaseUrl}/users`).pipe(
+      map(() => true),
+      catchError((error) => {
+        if (error.status == 0) {
+          console.error('Servidor offline: conexão recusada.', error.message);
+          return of(false);
+        }
+
+        return of(true);
+      })
+    );
+  }
+}
