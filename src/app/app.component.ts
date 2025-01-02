@@ -12,21 +12,8 @@ import { ServerStatusService } from './services/server-status.service';
   imports: [HeaderComponent,  CommonModule, RouterModule],
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit{
+export class AppComponent {
   title(title: any) {
     throw new Error('Method not implemented.');
-   }
-
-   serverOnline: boolean = true;
-
-   constructor(private serverStatusService: ServerStatusService) {}
- 
-   ngOnInit() {
-    this.serverStatusService.checkServerStatus().subscribe((status: boolean) => {
-      this.serverOnline = status;
-      if (!status) {
-        console.error('O servidor está offline.');
-      }
-    });
-  }
+   }  
  }
