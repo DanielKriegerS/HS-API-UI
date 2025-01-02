@@ -1,10 +1,29 @@
 import { Routes } from '@angular/router';
-import { LoginDisplayComponent } from '../components/login-display/login-display.component';
-import { RegisterDisplayComponent } from '../components/register-display/register-display.component';
-
+import { ServerStatusGuard } from '../guards/ServerStatusGuard';
 
 export const appRoutes: Routes = [
-  { path: 'login', component: LoginDisplayComponent }, 
-  { path: 'register', component: RegisterDisplayComponent},
-  { path: '**', redirectTo: '' }, 
+  {
+    path: 'login',
+    loadComponent: () =>
+      import('../components/login-display/login-display.component').then(
+        (m) => m.LoginDisplayComponent
+      ),
+    canActivate: [ServerStatusGuard],
+  },
+  {
+    path: 'register',
+    loadComponent: () =>
+      import('../components/register-display/register-display.component').then(
+        (m) => m.RegisterDisplayComponent
+      ),
+    canActivate: [ServerStatusGuard],
+  },
+  {
+    path: 'error',
+    loadComponent: () =>
+      import('../components/server-off-error/server-off-error.component').then(
+        (m) => m.ServerOffErrorComponent
+      ),
+  },
+  { path: '**', redirectTo: '' },
 ];
