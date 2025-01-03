@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, NavigationStart } from '@angular/router';
-import { AuthErrorService } from '../../app/services/auth-error.service';
+import { AuthErrorService } from '../../services/auth-error.service';
 import { CommonModule } from '@angular/common';
 
 @Component({

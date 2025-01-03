@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { interval, Subscription, switchMap, takeWhile } from 'rxjs';
-import { ServerStatusService } from '../../app/services/server-status.service';
+import { ServerStatusService } from '../../services/server-status.service';
 import { Router } from '@angular/router';
 
 @Component({

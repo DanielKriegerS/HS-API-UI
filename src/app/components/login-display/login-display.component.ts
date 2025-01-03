@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpErrorResponse } from '@angular/common/http';
-import { LoginService } from '../../app/services/login.service';
-import { AuthErrorService } from '../../app/services/auth-error.service';
+import { LoginService } from '../../services/login.service';
+import { AuthErrorService } from '../../services/auth-error.service';
 import { FormsModule } from '@angular/forms';
 import { AuthErrorComponent } from '../auth-error/auth-error.component';
 import { Router } from '@angular/router';

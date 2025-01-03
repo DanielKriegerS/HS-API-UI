@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { CanActivate, Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
-import { ServerStatusService } from '../app/services/server-status.service';
+import { ServerStatusService } from '../services/server-status.service';
 
 @Injectable({
   providedIn: 'root',

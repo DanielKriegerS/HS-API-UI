@@ -3,8 +3,8 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AuthErrorComponent } from '../auth-error/auth-error.component';
 import { HttpErrorResponse } from '@angular/common/http';
-import { AuthErrorService } from '../../app/services/auth-error.service';
-import { RegisterService } from '../../app/services/register.service';
+import { AuthErrorService } from '../../services/auth-error.service';
+import { RegisterService } from '../../services/register.service';
 import { Router } from '@angular/router';
 
 
