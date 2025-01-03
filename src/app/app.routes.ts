@@ -19,6 +19,14 @@ export const appRoutes: Routes = [
     canActivate: [ServerStatusGuard],
   },
   {
+    path: 'profile',
+    loadComponent: () =>
+      import('../components/profile-display/profile-display.component').then(
+        (m) => m.ProfileDisplayComponent
+      ),
+    canActivate: [ServerStatusGuard],
+  },
+  {
     path: 'error',
     loadComponent: () =>
       import('../components/server-off-error/server-off-error.component').then(
