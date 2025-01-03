@@ -1,0 +1,101 @@
+<div class="container mt-3">
+  <ul class="nav nav-tabs" style="display: flex; justify-content: space-between;">
+    <li class="nav-item" style="width: 50%;">
+      <button
+        class="nav-link text-center mx-auto"
+        [class.active]="activeTab === 'profile'"
+        (click)="activeTab = 'profile'"
+      >
+        Perfil
+      </button>
+    </li>
+    <li class="nav-item" style="width: 50%;">
+      <button
+        class="nav-link text-center mx-auto"
+        [class.active]="activeTab === 'items'"
+        (click)="activeTab = 'items'"
+      >
+        Meus Itens
+      </button>
+    </li>
+  </ul>
+
+  <div class="tab-content mt-1">
+    <div *ngIf="activeTab === 'profile'">
+      <h3>Perfil do Usuário</h3>
+      <form>
+        <div class="mb-3">
+          <label for="username" class="form-label">Username</label>
+          <input
+            type="text"
+            id="username"
+            class="form-control"
+            [(ngModel)]="username"
+            name="username"
+            [disabled]="!isEditing"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="phone" class="form-label">Phone</label>
+          <input
+            type="text"
+            id="phone"
+            class="form-control"
+            [(ngModel)]="phone"
+            name="phone"
+            [disabled]="!isEditing"
+          />
+        </div>
+
+        <div class="row">
+          <div class="mb-3 col-6">
+            <label for="birthday" class="form-label">Birthday</label>
+            <input
+              type="date"
+              id="birthday"
+              class="form-control"
+              [(ngModel)]="birthday"
+              name="birthday"
+              [disabled]="!isEditing"
+            />
+          </div>
+  
+          <div class="col-6">
+            <label for="age" class="form-label">Age</label>
+          </div>
+        </div>
+
+        <div class="mt-1 col-6 mx-auto d-flex gap-2 justify-content-center">
+          <button
+            *ngIf="!isEditing"
+            type="button"
+            class="btn btn-primary"
+            (click)="toggleEditMode()"
+          >
+            Editar Perfil
+          </button>
+          <button
+            *ngIf="isEditing"
+            type="button"
+            class="btn btn-success"
+            (click)="saveChanges()"
+          >
+            Salvar
+          </button>
+          <button
+            *ngIf="isEditing"
+            type="button"
+            class="btn btn-secondary"
+            (click)="cancelEdit()"
+          >
+            Cancelar
+          </button>
+        </div>        
+      </form>
+    </div>
+
+    <div *ngIf="activeTab === 'items'">
+      <h3>Meus Itens</h3>
+    </div>
+  </div>
+</div>
