@@ -1,6 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { ProfileService } from '../../services/profile.service';
+import { Profile } from '../../models/Profile';
 
 @Component({
   selector: 'app-profile-display',
@@ -11,29 +13,49 @@ import { FormsModule } from '@angular/forms';
 })
 
 export class ProfileDisplayComponent {
-  // Abas
   activeTab: string = 'profile';
 
-  // Informações do perfil
-  isEditing: boolean = false;
-  username: string = 'John Doe';
-  phone: string = '(123) 456-7890';
-  birthday: string = '1990-01-01';
-  age: number | null = 33;
+  userProfile: Profile = {
+    username: '',
+    phone: '',
+    birthday: '',
+    age: 0,
+    id: ''
+  };
+  
+  constructor(private profileService: ProfileService) {}
 
-  // Alternar para modo de edição
+  isEditing: boolean = false;
+
   toggleEditMode(): void {
     this.isEditing = !this.isEditing;
   }
 
-  // Salvar alterações
   saveChanges(): void {
     this.isEditing = false;
     alert('Alterações salvas com sucesso!');
   }
 
-  // Cancelar edição
   cancelEdit(): void {
     this.isEditing = false;
+  }
+  
+  ngOnInit(): void {
+    const userId = localStorage.getItem('userId');
+    
+    if (!userId) {
+      console.error('Usuário não logado ou userId ausente no localStorage');
+      return;
+    }
+  
+    this.profileService.getProfileByUserId(userId).subscribe({
+      next: (response) => {
+        console.log('Perfil carregado:', response); 
+        this.userProfile = response; 
+      },
+      error: (err) => {
+        console.error('Erro ao carregar o perfil:', err);
+      },
+    });
   }
 }

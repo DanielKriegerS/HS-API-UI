@@ -1,8 +1,23 @@
+@import '../../styles/variables.scss';
+
 .nav-item {
     width: 50%;
   }
   
-  .nav-link {
+.nav-link {
     text-align: center;
   }
+
+
+.item {
+  input[disabled] {
+    background-color: $background-color;
+    border: none;
+    pointer-events: none;
+    outline: none;
+  }
   
+  input[disabled]:hover {
+    cursor: default; 
+  }
+}
