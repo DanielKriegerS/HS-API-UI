@@ -1,5 +1,5 @@
 export const environment = {
     production: true,
-    apiBaseUrl: 'http://localhost:8080'
+    // here we'll put the productions URLs 
   };
   
