@@ -5,3 +5,4 @@ $text-color: rgba(30, 50, 140, .8);
 $text-hover-color: #ffffff;
 $border-color: #eeeedd;
 $error-color: rgba(200, 20, 50, .4);
+$warn-color: lighten($error-color, 60%);
