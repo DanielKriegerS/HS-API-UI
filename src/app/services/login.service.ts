@@ -3,19 +3,19 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import { LoginResponse } from '../models/LoginResponse';
+import { environment } from '../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
-  private apiUrl = 'http://localhost:8080/users/login';
-
   constructor(private http: HttpClient) {}
 
   login(email: string, password: string): Observable<LoginResponse> {
-    return this.http.post<LoginResponse>(this.apiUrl, { email, password }).pipe(
+    return this.http.post<LoginResponse>(`${environment.apiUserBaseUrl}/login`, { email, password }).pipe(
       tap((response: LoginResponse) => {
         localStorage.setItem('authToken', response.token);
+        localStorage.setItem('userId', response.userId);
       }),
       catchError((error: HttpErrorResponse) => {
         if (error.status === 0) {
