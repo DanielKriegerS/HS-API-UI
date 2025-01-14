@@ -25,7 +25,7 @@ export class LoginDisplayComponent {
 
     this.loginService.login(this.email, this.password).subscribe({
       next: () => {
-        this.router.navigate(['/feed']);
+        this.router.navigate(['/profile']);
       },
       error: (error: HttpErrorResponse) => {
         const errorMessage = error.error?.message || 'Erro desconhecido';

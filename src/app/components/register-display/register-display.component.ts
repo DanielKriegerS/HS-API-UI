@@ -26,7 +26,7 @@ export class RegisterDisplayComponent {
 
     this.registerService.register(this.email, this.password).subscribe({
       next: () => {
-        this.router.navigate(['/profile']);
+        this.router.navigate(['/login']);
       },
       error: (error: HttpErrorResponse) => {
         const errorMessage = error.error?.message || 'Erro desconhecido';
