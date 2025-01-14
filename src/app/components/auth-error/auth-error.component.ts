@@ -14,17 +14,24 @@ export class AuthErrorComponent implements OnInit {
   errorContext?: 'login' | 'register';
   errorCode?: number;
   errorMessage?: string;
+  attemptsLeft: number = 3;
 
   constructor(private errorService: AuthErrorService, private router: Router) {}
 
   ngOnInit(): void {
     this.errorService.errorContext$.subscribe(context => (this.errorContext = context));
-    this.errorService.errorCode$.subscribe(code => (this.errorCode = code));
+    this.errorService.errorCode$.subscribe(code => {
+      this.errorCode = code;
+      if (code === 401 && this.attemptsLeft > 0) {
+        this.attemptsLeft--;
+      }
+    });
     this.errorService.errorMessage$.subscribe(message => (this.errorMessage = message));
 
     this.router.events.subscribe(event => {
       if (event instanceof NavigationStart) {
         this.errorService.clearError();
+        this.attemptsLeft = 3; // thats not permanent
       }
     });
   }

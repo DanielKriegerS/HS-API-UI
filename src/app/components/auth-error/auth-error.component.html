@@ -10,6 +10,16 @@
       <span class="link" (click)="navigateToLogin()">Login</span>.
     </div>
 
+    <div *ngSwitchCase="401">
+      {{ errorMessage }}
+      <span *ngIf="attemptsLeft > 0" class="count">
+        Left: {{ attemptsLeft }}
+      </span>
+      <span *ngIf="attemptsLeft === 0" class="lockout">
+        Blocked. Verify your e-mail
+      </span>
+    </div>    
+
     <div *ngSwitchDefault>
       {{ errorMessage }}
     </div>
